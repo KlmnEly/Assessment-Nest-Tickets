@@ -9,6 +9,7 @@ import { join } from 'path';
 import { RolesModule } from './modules/roles/roles.module';
 import { UsersModule } from './modules/users/users.module';
 import { CategoryModule } from './modules/category/category.module';
+import { TicketsModule } from './modules/tickets/tickets.module';
 
 const runningInDocker = process.env.RUNNING_IN_DOCKER === 'true';
 const externalEnvPath = join(__dirname, '../../', '.env');
@@ -23,7 +24,9 @@ const externalEnvPath = join(__dirname, '../../', '.env');
     }),
     DatabaseModule,
     RolesModule,
-    UsersModule
+    UsersModule,
+    CategoryModule,
+    TicketsModule
   ],
 controllers: [AppController],
   providers: [AppService],
