@@ -1,4 +1,4 @@
-// import { Access } from "src/modules/accesses/entities/access.entity";
+import { User } from "src/modules/users/entities/user.entity";
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity('roles')
@@ -9,6 +9,6 @@ export class Role {
     @Column({ unique: true })
     name: string;
 
-    // @OneToMany(() => Access, (access) => access.role)
-    // accesses: Access[];
+    @OneToMany(() => User, (user) => user.role)
+    users: User[];
 }
