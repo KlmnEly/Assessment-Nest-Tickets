@@ -14,7 +14,7 @@ export class TicketService {
     private readonly ticketRepository: Repository<Ticket>,
   ) {}
 
-  // --- Crear Ticket ---
+  // --- Create Ticket ---
   async create(createTicketDto: CreateTicketDto): Promise<Ticket> {
     try {
       const newTicket = this.ticketRepository.create(createTicketDto);
@@ -27,7 +27,7 @@ export class TicketService {
     }
   }
 
-  // --- Obtener Tickets (con relaciones) ---
+  // --- Get Tickets
   async findAll(): Promise<Ticket[]> {
     try {
       const tickets = await this.ticketRepository.find({
@@ -43,7 +43,7 @@ export class TicketService {
     }
   }
 
-  // --- Obtener por ID ---
+  // --- Get By ID ---
   async findOne(id: number): Promise<Ticket> {
     if (!id || id <= 0) {
         throw new BadRequestException('A valid ID is required.');
@@ -64,7 +64,7 @@ export class TicketService {
     }
   }
 
-  // --- Actualizar Ticket ---
+  // --- Update Ticket ---
   async update(id: number, updateTicketDto: UpdateTicketDto): Promise<Ticket> {
     if (!id || id <= 0) {
         throw new BadRequestException('A valid ID is required for update.');
@@ -95,7 +95,7 @@ export class TicketService {
     }
   }
   
-  // --- Eliminar Ticket ---
+  // --- Delete Ticket ---
   async remove(id: number): Promise<void> {
     if (!id || id <= 0) {
         throw new BadRequestException('A valid ID is required for deletion.');

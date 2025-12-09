@@ -83,6 +83,29 @@ export class UsersService {
     }
   }
 
+  // Get by email
+    async getByEmail(email: string) {
+    if (!email || typeof email !== 'string' || !email.trim()) {
+      throw new BadRequestException('A valid email is required.');
+    }
+    try {
+      const user = await this.userRepository.findOne({
+        where: {
+          email: email
+        }
+      });
+
+      if (!user) {
+        throw new NotFoundException(`Access with name "${name}" not found.`);
+      }
+
+      return user;
+    } catch (err: any) {
+      if (err.response?.statusCode) throw err;
+      throw new InternalServerErrorException('Error fetching user by email.');
+    }
+  }
+
   // Update user by ID
   async update(id: number, updateUserDto: UpdateUserDto): Promise<User> {
     if (!id || id <= 0) {
