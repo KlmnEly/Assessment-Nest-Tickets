@@ -23,7 +23,8 @@ const externalEnvPath = join(__dirname, '../../', '.env');
     }),
     DatabaseModule,
     RolesModule,
-    UsersModule
+    UsersModule,
+    CategoryModule
   ],
 controllers: [AppController],
   providers: [AppService],
